@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  mongo:
+    environment:
+      MONGO_INITDB_DATABASE:
+      MONGO_INITDB_ROOT_PASSWORD:
+      MONGO_INITDB_ROOT_USERNAME:
+    image: mongo
+    ports:
+      - "27017:${MONGODB_PORT:-27017}"
+    restart: always
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - /mongo_db:/mongo_db
+    networks:
+      trader-network:
+        aliases:
+          - "{MONGODB_HOST:-mongo}"
+
+networks:
+  trader-network:
+    external: true

@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  traderbot:
+#    env_file:
+#      - /deploy/secrets.env
+    build: .
+    ports:
+      - 8050:8050
+    networks:
+      trader-network:
+
+networks:
+  trader-network:
+    external: true

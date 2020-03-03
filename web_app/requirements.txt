@@ -1,0 +1,10 @@
+requests
+pandas
+numpy
+sklearn
+scipy
+plotly
+dash
+dash-bootstrap-components
+dash-daq
+flask

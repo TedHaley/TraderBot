@@ -16,8 +16,6 @@ logger = logging.getLogger(__name__)
 os.environ["STOCK_TOKEN"] = "pk_165010d1ca4443b2b7bdd81f4d610844"
 token = os.environ["STOCK_TOKEN"]
 
-print(token)
-
 
 class _IEXBase(object):
     _OLD_URL = 'https://api.iextrading.com/1.0/'
@@ -121,8 +119,7 @@ class Stock(_IEXBase):
 def stock_symbols():
     stock_instance = Stock()
     symbols = stock_instance.get_stock_names()
-
-    return [{'label': f"{symbol} - {metadata['name']}", 'value': symbol} for symbol, metadata in symbols.items()]
+    return symbols
 
 
 if __name__ == '__main__':
@@ -151,11 +148,11 @@ if __name__ == '__main__':
 
         print(df)
 
-        plt.plot(df['date'], df['changePercent'])
-        plt.show()
-
-        plt.plot(df['date'], df['uVolume'])
-        plt.show()
+        # plt.plot(df['date'], df['changePercent'])
+        # plt.show()
+        #
+        # plt.plot(df['date'], df['uVolume'])
+        # plt.show()
 
 
 
